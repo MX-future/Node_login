@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <style>
+        html,body{
+            margin: 0;
+        }
+        html{
+            background: url("images/bg4.jpg") repeat fixed;
+        }
+        .login{
+            margin: 0 auto;
+            margin-top: 200px;
+            width: 500px;
+            height: 350px;
+            border-radius: 10px;
+            background: url('images/bg_login.jpeg');
+            padding-top: 10px;
+        }
+        h2{
+            margin-left: 200px;
+            margin-bottom: 40px;
+            color: snow;
+        }
+        input{
+            width: 180px;
+            height: 30px;
+            border-radius: 7px;
+            outline: none;
+            border: 1px solid #00B7FF;
+            padding-left: 8px;
+        }
+        label{
+            color: snow;
+        }
+        .name,.password{
+            width: 400px;
+            height: 40px;
+            margin-left: 120px;
+            margin-top: 20px;
+        }
+        button{
+            width: 200px;
+            height: 40px;
+            border-radius: 11px;
+            margin-left: 155px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background: lightskyblue;
+            outline: none;
+            border: none;
+        }
+        a{
+            text-decoration: none;
+            margin-left: 300px;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <form method="post" action="/login" id="form">
+        <h2>用户登录</h2>
+        <div class="name">
+            <label>昵称: </label><input type="text" name="username" id="name" /><br/>
+        </div>
+        <div class="password">
+            <label>密码: </label><input type="password" name="password" id="password" onfocus="CheckName()" /><br/>
+        </div>
+        <button class="to_login" onclick="CheckPwd()">登录</button><br/>
+        <a href="register">没有账号？ 立即注册</a>
+
+
+    </form>
+</div>
+<script>
+    function CheckName(){
+        var name = document.getElementById('name');
+        if(name.value=="") {
+            alert('请输入用户名!');
+            //使输入框处于选中状态
+            name.select();
+        }
+    }
+
+    function CheckPwd(){
+        var pwd = document.getElementById('password');
+        var form = document.getElementById('form');
+        if(pwd==""){
+            alert('请输入密码!');
+            pwd.select();
+            //阻止默认浏览器默认事件，防止表单继续提交
+            event.preventDefault();
+        }else{
+            //提交表单
+            form.submit();
+        }
+    }
+
+</script>
+</body>
+</html>
